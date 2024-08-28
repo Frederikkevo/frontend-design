@@ -1,4 +1,27 @@
-article {
-    max-width: 65ch;
-    margin-inline: auto;
+content {
+    margin: 1fr;
+    --gap: clamp(1rem, 6vw, 1rem);
+    --full: minmax(0, 1fr);
+    --content: 100%;
+    --popout: minmax(0, 2rem);
+  
+    display: grid;
+    grid-template-columns:
+      [full-start] var(--full) 
+      [popout-start] var(--popout)
+      [content-start] var(--content) [content-end]
+      var(--popout) [popout-end]
+      var(--full) [full-end];
+}
+
+.content > * {
+    grid-column: content;
+}
+
+.popout {
+    grid-column: popout;
+}
+
+.full {
+    grid-column: full;
 }
